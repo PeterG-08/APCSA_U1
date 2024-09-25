@@ -15,16 +15,23 @@ public class P1 {
         int numOfPeople = scanner.nextInt();
 
         // calculate everything
-        double tip = (tipPercent / 100) * bill;
-        double totalBill = bill + tip;
-        double tipPerPerson = tip / numOfPeople;
-        double totalBillPerPerson = totalBill / numOfPeople;
+        double tip = roundToHundreds((tipPercent / 100) * bill);
+        double totalBill = roundToHundreds(bill + tip);
+        double tipPerPerson = roundToHundreds(tip / numOfPeople);
+        double totalBillPerPerson = roundToHundreds(totalBill / numOfPeople);
 
         // print everything
         printLine("Total tip: $" + tip, false);
         printLine("Total bill cost: $" + totalBill, false);
         printLine("Tip per person: $" + tipPerPerson, false);
         printLine("Total bill per person: $" + totalBillPerPerson, true);
+    }
+
+    /**
+     * Rounds a double to the hundreds place.
+     */
+    public static double roundToHundreds(double num) {
+        return (int) (num * 100) / 100.0;
     }
 
     /**
